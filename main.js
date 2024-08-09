@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.addEventListener('dragstart', event => event.preventDefault());
     });
 });
-//UUID
+
 function generateUUID(elementId) {
     const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
         const r = Math.random() * 16 | 0;
@@ -34,7 +34,6 @@ function generateUUID(elementId) {
 function handleFileSelect(event) {
     const files = event.target.files;
     const container = document.getElementById('skinPreview');
-    container.innerHTML = '';
 
     Array.from(files).forEach((file, index) => {
         if (!file.type.startsWith('image/')) return;
