@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/egriojn.png">
+    <meta property="og:title" content="MineSkinPackEditor">
+    <meta property="og:description" content="Minecraftのスキンパックを簡単に作成できるサイトです">
+    <meta property="og:type" content="website">
+    <title>MineSkinPackEditor</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <h1>MineSkinPackEditor</h1>
+    </header>
+    <section class="description">
+        <p>
+            <strong>MineSkinPackEditor</strong> は、簡単にスキンパックを作成できます。<br>これはマインクラフト統合版でのみ動作します。<br>利用する際は利用規約を確認してね<br>質問や不具合などはDiscordまで
+        </p>
+    </section>
+    <main>
+        <form id="skin-pack-form">
+            <div class="form-group">
+                <label for="pack-name">スキンパックの名前:</label>
+                <input type="text" id="pack-name" placeholder="スキンパックの名前を入力" required>
+            </div>
+            <div class="uuid-container">
+                <input type="text" id="pack-uuid" value="" readonly>
+                <button type="button" onclick="generateUUID('pack-uuid')">再生成</button>
+            </div>
+            <div class="uuid-container">
+                <input type="text" id="module-uuid" value="" readonly>
+                <button type="button" onclick="generateUUID('module-uuid')">再生成</button>
+            </div>
+            <div class="file-upload">
+                <label for="skin-image" id="fileName">スキン画像を選択</label>
+                <input type="file" id="skin-image" accept="image/png" multiple>
+            </div>
+            <div id="skinPreview"></div>
+            <button type="button" class="create-button" onclick="createSkinPack()">スキンパックを作成</button>
+        </form>
+    </main>
+    <footer>
+        <a href="kiyaku.html">利用規約</a> |
+        <a href="https://discord.gg/38vvQyDFEk"target="_blank">Discord</a>
+        <p>著作者の許可なく複製することを禁じます</p>
+        <p>&copy; 2024 YURIRI</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
