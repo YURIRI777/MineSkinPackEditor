@@ -11,8 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const fileNames = Array.from(files).map(file => file.name).join(', ');
         fileNameLabel.textContent = fileNames || 'スキン画像を選択';
     });
-});
 
+    document.addEventListener('contextmenu', function(event) {
+        if (event.target.tagName !== 'INPUT' || event.target.type !== 'text') {
+            event.preventDefault();
+        }
+    });
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', event => event.preventDefault());
+    });
+});
+//UUID
 function generateUUID(elementId) {
     const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
         const r = Math.random() * 16 | 0;
@@ -79,6 +88,7 @@ function createSkinPack() {
             hideArmor: hideArmorCheckboxes[index].checked
         };
     });
+
     if (packName === '' || skins.some(skin => skin.name === '')) {
         alert('スキンパックの名前とスキンの名前を入力してください');
         return;
@@ -106,7 +116,7 @@ function createSkinPack() {
         geometry: "skinpacks/skins.json",
         skins: skins.map((skin, index) => ({
             localization_name: skin.name,
-            geometry: `geometry.${skin.armType}`,
+            geometry: skin.armType === 'default' ? 'geometry.humanoid.custom' : 'geometry.humanoid.customSlim',
             texture: `skin_${index}.png`,
             type: "free", 
             animations: skin.animationType ? {
@@ -141,15 +151,3 @@ function createSkinPack() {
         document.body.removeChild(a);
     });
 }
-
-document.addEventListener('contextmenu', function(event) {
-    // もしターゲットがテキストボックスでない場合、右クリックを無効にする
-    if (event.target.tagName !== 'INPUT' || event.target.type !== 'text') {
-        event.preventDefault();
-    }
-});
-
-// 画像のドラッグを無効にする
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('dragstart', event => event.preventDefault());
-});
