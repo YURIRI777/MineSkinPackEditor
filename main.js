@@ -59,7 +59,7 @@ function handleFileSelect(event) {
                     </select>
                 </div>
                 <div>
-                    <label for="animation-${newSkinData.id}">アニメーションを追加:</label>
+                    <label for="animation-${newSkinData.id}">腕をゾンビ化:</label>
                     <select id="animation-${newSkinData.id}" data-id="${newSkinData.id}" class="animation-type">
                         <option value="false" selected>いいえ</option>
                         <option value="true">はい</option>
@@ -174,3 +174,4 @@ function createSkinPack() {
 }
 
 //協力してくれた方感謝します
+
